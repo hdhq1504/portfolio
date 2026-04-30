@@ -23,22 +23,6 @@ export default function HeroSection() {
   const scale = useTransform(scrollYProgress, [0, 0.8], [1, 0.9]);
   const y = useTransform(scrollYProgress, [0, 0.8], [0, -150]);
 
-  // Parallax effect on mouse move
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      const { clientX, clientY } = e;
-      const { innerWidth, innerHeight } = window;
-
-      const x = (clientX - innerWidth / 2) / innerWidth;
-      const y = (clientY - innerHeight / 2) / innerHeight;
-
-      setMousePosition({ x, y });
-    };
-
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
-
   // Rotate titles
   useEffect(() => {
     const interval = setInterval(() => {
@@ -119,47 +103,6 @@ export default function HeroSection() {
           }}
         />
       </div>
-
-      {/* Indigo gradient at bottom */}
-      <motion.div
-        className="absolute bottom-0 left-0 right-0 h-48 md:h-64 pointer-events-none"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.5, delay: 0.5 }}
-        style={{
-          background: "linear-gradient(to top, rgba(99, 102, 241, 0.15), transparent)",
-        }}
-      />
-      <motion.div
-        className="absolute bottom-0 left-1/4 w-96 h-48 md:h-72 pointer-events-none"
-        animate={{
-          opacity: [0.3, 0.6, 0.3],
-          y: [0, -20, 0],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        style={{
-          background: "radial-gradient(ellipse, rgba(99, 102, 241, 0.2) 0%, transparent 70%)",
-        }}
-      />
-      <motion.div
-        className="absolute bottom-0 right-1/4 w-80 h-40 md:h-60 pointer-events-none"
-        animate={{
-          opacity: [0.2, 0.5, 0.2],
-          y: [0, 15, 0],
-        }}
-        transition={{
-          duration: 10,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        style={{
-          background: "radial-gradient(ellipse, rgba(139, 92, 246, 0.15) 0%, transparent 70%)",
-        }}
-      />
 
       {/* Main content */}
       <motion.div
@@ -254,7 +197,7 @@ export default function HeroSection() {
           className="flex items-center gap-4 mt-10 md:mt-20"
         >
           <a
-            href="https://github.com/hdhq1504"
+            href="https://github.com"
             target="_blank"
             rel="noopener noreferrer"
             className="text-sm text-muted-foreground hover:text-foreground transition-colors tracking-wide"
@@ -263,7 +206,7 @@ export default function HeroSection() {
           </a>
           <span className="w-1 h-1 rounded-full bg-muted-foreground" />
           <a
-            href="https://linkedin.com/in/hoduchoangquan"
+            href="https://linkedin.com"
             target="_blank"
             rel="noopener noreferrer"
             className="text-sm text-muted-foreground hover:text-foreground transition-colors tracking-wide"

@@ -4,7 +4,6 @@ import { useRef } from "react";
 import Image from "next/image";
 import { motion, useInView } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
-import Marquee from "@/components/Marquee";
 
 export default function AboutSection() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -14,23 +13,19 @@ export default function AboutSection() {
     <section
       ref={sectionRef}
       id="about"
-      className="relative py-4"
+      className="relative py-24 md:py-32 lg:py-40"
     >
-      {/* Marquee divider */}
-      <Marquee
-        text="ABOUT ME"
-        speed={40}
-        className="py-12 md:py-16"
-      />
-
       <div className="max-w-[1600px] mx-auto px-6 md:px-12">
         {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="mb-12 md:mb-16"
+          className="mb-16 md:mb-24"
         >
+          <span className="text-sm font-medium tracking-[0.2em] uppercase text-muted-foreground mb-4 block">
+            About
+          </span>
           <h2 className="text-5xl md:text-7xl lg:text-8xl font-heading font-bold tracking-tight">
             Who I Am
           </h2>

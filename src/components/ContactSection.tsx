@@ -84,7 +84,7 @@ export default function ContactSection() {
                 </span>
                 <div className="flex gap-3">
                   <motion.a
-                    href="https://github.com/hdhq1504"
+                    href="https://github.com"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-foreground hover:text-background transition-all duration-300 cursor-pointer"
@@ -100,7 +100,7 @@ export default function ContactSection() {
                     </svg>
                   </motion.a>
                   <motion.a
-                    href="https://linkedin.com/in/hoduchoangquan"
+                    href="https://linkedin.com"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-foreground hover:text-background transition-all duration-300 cursor-pointer"

@@ -1,48 +1,11 @@
 "use client";
 
 import { useRef, useState } from "react";
+import Link from "next/link";
 import { motion, useInView, useScroll, useTransform } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
 import Marquee from "./Marquee";
-
-const projects = [
-  {
-    id: 1,
-    title: "HUIT Social Credits",
-    description:
-      "Student management system with face-recognition attendance, role-based access control (RBAC), activity approval workflows, and automated email notifications. PWA support for cross-platform mobile experience.",
-    tags: ["ReactJS", "Node.js", "Express", "PostgreSQL", "Prisma"],
-    year: "2025",
-    category: "Final Year Project",
-    image:
-      "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1200&h=800&fit=crop",
-    link: "https://github.com/hdhq1504/huit-social-credits",
-  },
-  {
-    id: 2,
-    title: "Note Taking App",
-    description:
-      "Real-time collaborative document system with hierarchical data structure, authentication & authorization with role-based access control, full-text search, and soft-delete system.",
-    tags: ["Next.js", "TypeScript", "Convex", "Clerk"],
-    year: "2026",
-    category: "Personal Project",
-    image:
-      "https://images.unsplash.com/photo-1517842645767-c639042777db?w=1200&h=800&fit=crop",
-    link: "https://github.com/hdhq1504/jotion-note-taking",
-  },
-  {
-    id: 3,
-    title: "NexTalk",
-    description:
-      "Collaborated with backend developer to build a real-time chat application with user authentication, real-time messaging, and message handling features.",
-    tags: ["ReactJS", "Node.js", "Express", "RESTful API"],
-    year: "2026",
-    category: "Personal Project",
-    image:
-      "https://images.unsplash.com/photo-1611746872915-64382b5c76da?w=1200&h=800&fit=crop",
-    link: "https://github.com/hdhq1504/nextalk",
-  },
-];
+import { projects } from "@/data/projectsData";
 
 export default function ProjectsSection() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -50,8 +13,41 @@ export default function ProjectsSection() {
 
   return (
     <section ref={sectionRef} id="work" className="relative overflow-hidden">
+      {/* Gradient transition from Hero - positioned above the section */}
+      <div className="absolute top-0 left-0 right-0 h-32 md:h-48 -translate-y-full pointer-events-none z-10">
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(to bottom, transparent 0%, rgba(99, 102, 241, 0.08) 50%, transparent 100%)",
+          }}
+        />
+        <motion.div
+          className="absolute top-0 left-[20%] w-[700px] h-[400px] md:h-[500px]"
+          animate={{ opacity: [0.3, 0.5, 0.3] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          style={{
+            background:
+              "radial-gradient(ellipse at top, rgba(99, 102, 241, 0.12) 0%, transparent 70%)",
+          }}
+        />
+        <motion.div
+          className="absolute top-0 right-[25%] w-[500px] h-[350px] md:h-[450px]"
+          animate={{ opacity: [0.2, 0.4, 0.2] }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+          style={{
+            background:
+              "radial-gradient(ellipse at top, rgba(139, 92, 246, 0.1) 0%, transparent 70%)",
+          }}
+        />
+      </div>
+
       {/* Marquee divider */}
-      <Marquee text="SELECTED WORK" speed={40} className="py-12 md:py-16" />
+      <Marquee
+        text="SELECTED WORK"
+        speed={40}
+        className="py-12 md:py-16 relative z-20"
+      />
 
       {/* Section header */}
       <motion.div
@@ -131,7 +127,7 @@ function ProjectItem({
         transition={{ duration: 1, delay: 0.2 }}
       />
 
-      <div className="max-w-[1600px] mx-auto px-6 md:px-12 pt-16 md:pt-24 lg:pt-32">
+      <div className="max-w-[1600px] mx-auto px-6 md:px-12 py-16 md:py-24 lg:py-32">
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
           {/* Image container */}
           <motion.div
@@ -140,10 +136,8 @@ function ProjectItem({
             animate={isItemInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <a
-              href={project.link}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href={`/projects/${project.id}`}
               className="block relative overflow-hidden rounded-2xl md:rounded-3xl group"
             >
               {/* Image wrapper with overflow for scale effect */}
@@ -182,7 +176,7 @@ function ProjectItem({
                   {project.category}
                 </span>
               </div>
-            </a>
+            </Link>
           </motion.div>
 
           {/* Content */}

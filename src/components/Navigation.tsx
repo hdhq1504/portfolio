@@ -85,7 +85,7 @@ export default function Navigation() {
       >
         <div
           className={cn(
-            "mx-auto transition-all duration-500 flex items-center py-4",
+            "mx-auto transition-all duration-500 flex items-center py-2",
             isScrolled && !isMobile
               ? "justify-center px-4 md:px-6 max-w-xl bg-background/90 backdrop-blur-md border border-border/50 shadow-sm rounded-full"
               : "justify-between px-6 md:px-12 max-w-[1600px]",

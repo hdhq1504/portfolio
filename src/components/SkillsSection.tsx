@@ -2,7 +2,6 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "motion/react";
-import Marquee from "@/components/Marquee";
 
 const skillCategories = [
   {
@@ -45,10 +44,10 @@ export default function SkillsSection() {
     <section
       ref={sectionRef}
       id="skills"
-      className="relative py-4"
+      className="relative py-16 md:py-32 lg:py-40"
     >
-      {/* Marquee divider */}
-      <Marquee text="SKILLS & TECHNOLOGIES" speed={40} className="py-12 md:py-16" />
+      {/* Background gradient */}
+      <div className="absolute inset-0 bg-linear-to-b from-background via-background to-muted/20" />
 
       <div className="relative max-w-[1600px] mx-auto px-6 md:px-12">
         {/* Section header */}

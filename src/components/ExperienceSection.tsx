@@ -3,13 +3,19 @@
 import { useRef } from "react";
 import { motion, useInView } from "motion/react";
 import { Briefcase } from "lucide-react";
-import Marquee from "@/components/Marquee";
 
 const experiences = [
   {
-    role: "Frontend Developer Intern",
+    role: "Frontend Developer",
     company: "LAZINET Applied Technology Company Limited",
     duration: "Jul 2025 - Sep 2025",
+    highlights: [
+      "Collaborated with a backend developer to build a real-time chat application",
+      "Developed user interface and integrated RESTful APIs for messaging features",
+      "Implemented core functionalities including real-time messaging, user authentication, and message handling",
+      "Worked under mentor guidance and participated in product demo sessions",
+    ],
+    technologies: ["ReactJS", "Node.js", "Express", "RESTful API"],
   },
 ];
 
@@ -21,10 +27,10 @@ export default function ExperienceSection() {
     <section
       ref={sectionRef}
       id="experience"
-      className="relative py-4"
+      className="relative py-24 md:py-32 lg:py-40"
     >
-      {/* Marquee divider */}
-      <Marquee text="WORK EXPERIENCE" speed={40} className="py-12 md:py-16" />
+      {/* Background gradient */}
+      <div className="absolute inset-0 bg-linear-to-b from-background via-muted/20 to-background" />
 
       <div className="relative max-w-[1600px] mx-auto px-6 md:px-12">
         {/* Section header */}
@@ -72,6 +78,31 @@ export default function ExperienceSection() {
                   <p className="text-lg text-muted-foreground mb-6">
                     {exp.company}
                   </p>
+
+                  {/* Highlights */}
+                  <ul className="space-y-3 mb-6">
+                    {exp.highlights.map((highlight, hIndex) => (
+                      <li
+                        key={hIndex}
+                        className="flex items-start gap-3 text-muted-foreground"
+                      >
+                        <span className="w-1.5 h-1.5 rounded-full bg-foreground mt-2 shrink-0" />
+                        {highlight}
+                      </li>
+                    ))}
+                  </ul>
+
+                  {/* Technologies */}
+                  <div className="flex flex-wrap gap-2">
+                    {exp.technologies.map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-3 py-1 bg-muted rounded-full text-xs font-medium"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </motion.div>
             ))}
